@@ -9,4 +9,6 @@ require('./bookshelf.js')();
 require('./routes.js')(app);
 
 // start server
-app.listen(config.port);
+app.listen(config.port, () => {
+    console.log(`\nRunning getAgent API at http://localhost:${config.port}`)
+})
