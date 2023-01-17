@@ -3,6 +3,10 @@ const router = new Router();
 
 const lrProperty = require('./models/lrProperty.js');
 
+/**
+ * Checks that the route parameter used exists in 
+ * the LrProperty Db.
+ */
 router.param('lrPropertyId', async (id, ctx, next) =>
 {
 	ctx.lrProperty = await new lrProperty({id: id}).fetch({withRelated: ['lrTransactions'], require: false});
@@ -16,10 +20,12 @@ router.param('lrPropertyId', async (id, ctx, next) =>
 	return next();
 
 })
+
 .get('/', async (ctx, next) => 
 {
 	return ctx.body = "I'm alive!";
 })
+
 .get('/lrProperty/:lrPropertyId', async (ctx, next) => 
 {
 	return ctx.body = {success: true, lrProperty: ctx.lrProperty.toJSON()};
