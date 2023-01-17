@@ -25,8 +25,13 @@ function HomeScreen()
   /* end example */
 
   return (
-    <div className="App">
-      {propertyData ? <strong>{propertyData.street}</strong> : null}
+    <div className="base-container">
+      <div className="header-container">
+        <h1 className="header-title">GetProperty</h1>
+      </div>
+      <div className="search-container">
+
+      </div>
 
     </div>
   );
