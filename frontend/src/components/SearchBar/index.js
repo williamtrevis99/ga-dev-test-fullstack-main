@@ -2,19 +2,13 @@ import {useState, useEffect} from 'react';
 import './styles.css';
 
 
-function SearchBar() {
+function SearchBar(props) {
 
-    const [searchInput, setSearchInput] = useState("");
 
     const handleChange = (e) => {
         e.preventDefault();
-        setSearchInput(e.target.value);
+        props.setQuery(e.target.value);
       };
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-          console.log('Search')
-        }
-    }
 
 
     return (
@@ -23,9 +17,8 @@ function SearchBar() {
             type="text"
             placeholder="Enter a property ID, postcode or a street.."
             onChange={handleChange}
-            defaultValue={searchInput}
-            value={searchInput} 
-            onKeyDown={handleKeyDown}
+            defaultValue={props.query}
+            value={props.query} 
             />
     )
 
