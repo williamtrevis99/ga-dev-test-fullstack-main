@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react';
 import './styles.css';
+import SearchBar from '../../components/SearchBar';
+import Button from '../../components/SearchButton';
 
 
 function HomeScreen()
@@ -27,10 +29,11 @@ function HomeScreen()
   return (
     <div className="base-container">
       <div className="header-container">
-        <h1 className="header-title">GetProperty</h1>
+        <h1 className="header-title">.getTransaction()</h1>
       </div>
       <div className="search-container">
-
+        <SearchBar />
+        <Button />
       </div>
 
     </div>

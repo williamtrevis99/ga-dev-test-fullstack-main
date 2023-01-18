@@ -12,11 +12,15 @@
 
   .header-container {
     width: 100%;
+    text-align: center;
   }
 
   .search-container {
-    background-color: red;
+    display: flex;
     flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 
   .header-title {
