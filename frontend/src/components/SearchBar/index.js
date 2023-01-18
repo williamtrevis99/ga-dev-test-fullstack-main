@@ -21,7 +21,7 @@ function SearchBar() {
         <input
             className="search-bar"
             type="text"
-            placeholder="Enter a property ID, postcode or a street"
+            placeholder="Enter a property ID, postcode or a street.."
             onChange={handleChange}
             defaultValue={searchInput}
             value={searchInput} 

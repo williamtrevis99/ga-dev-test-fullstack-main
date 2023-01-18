@@ -9,6 +9,8 @@ function HomeScreen()
 
   /* This is example of how to fetch data from API */
   const [propertyData, setPropertyData] = useState(null);
+  const [searchState, setSearchState] = useState('default');
+
 
   useEffect(() =>
   {
@@ -29,11 +31,11 @@ function HomeScreen()
   return (
     <div className="base-container">
       <div className="header-container">
-        <h1 className="header-title">.getTransaction()</h1>
+        <h1 className="header-title">getTransaction()</h1>
       </div>
       <div className="search-container">
         <SearchBar />
-        <Button />
+        <Button setSearchState={setSearchState}/>
       </div>
 
     </div>

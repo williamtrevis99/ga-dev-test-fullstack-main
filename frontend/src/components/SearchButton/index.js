@@ -3,13 +3,18 @@ import './styles.css';
 
 
 
-function Button() {
+function Button(props) {
+
+    const onClick = () => {
+        props.setSearchState('searching')
+    }
 
     return (
         <button 
             className="button"
             placeholder={"Search"}
             type={'button'}
+            onClick={onClick}
         >Search</button>
     )
 
