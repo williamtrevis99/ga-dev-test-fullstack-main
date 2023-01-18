@@ -26,11 +26,17 @@ code {
 
 .header-container {
   width: 100%;
-  text-align: center;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start
 }
 
 .header-title {
-  color: white
+  color: white;
+  margin: 0;
+  justify-self: center;
 }
 
 .secondary-container {
@@ -39,14 +45,16 @@ code {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rebeccapurple;
 }
 
 @media only screen and (max-width: 600px) {
   .base-container {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     box-sizing: border-box;
     background-color: red;
+    height: 100vh;
     width: 100vw;
     padding: 20px;
   }

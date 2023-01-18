@@ -1,19 +1,37 @@
+import {useState} from 'react';
+
+import BackButton from './components/BackButton/index';
+
 import SearchView from './views/SearchView'
+import ResultsView from './views/ResultsView';
 
 
 function App()
 {
+
+  const [view, setView] = useState('SearchView');
+  const [propertyData, setPropertyData] = useState(0);
+
   return (
     <div className="base-container">
+      
       <div className="header-container">
-        <h1 className="header-title">getTransaction()</h1>
+
+        { view === 'ResultsView' ? 
+            <BackButton setView={setView}/> : null 
+        }
+
       </div>
+      
       <div className="secondary-container">
-        <SearchView />
+        
+        { view === 'SearchView' ? 
+          <SearchView setView={setView} setPropertyData={setPropertyData}/> : 
+          <ResultsView propertyData={propertyData} /> 
+        }
+
       </div>
     </div>
-
-
   );
 }
 

@@ -3,7 +3,7 @@ import './styles.css';
 
 
 
-function Button(props) {
+function SearchButton(props) {
 
     const search = async (query) => {
         const resp = await fetch(`/lrProperty/${query}`);
@@ -14,7 +14,7 @@ function Button(props) {
     }
 
     const onClick = async () => {
-        props.setSearchState('searching')
+        props.setView('ResultsView')
         props.setPropertyData(await search(props.query))
     }
 
@@ -30,4 +30,4 @@ function Button(props) {
 }
 
 
-export default Button;
+export default SearchButton;

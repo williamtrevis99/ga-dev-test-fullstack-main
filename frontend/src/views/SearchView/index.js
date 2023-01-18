@@ -1,21 +1,18 @@
 import {useState, useEffect} from 'react';
 import './styles.css';
 import SearchBar from '../../components/SearchBar';
-import Button from '../../components/SearchButton';
+import SearchButton from '../../components/SearchButton';
 
 
-function SearchView()
+function SearchView(props)
 {
 
-  const [propertyData, setPropertyData] = useState(0);
-  const [searchState, setSearchState] = useState('default');
   const [query, setQuery] = useState('');
 
   return (
     <>
-     <SearchBar setQuery={setQuery} query={query}/>
-        <Button setSearchState={setSearchState} query={query} setPropertyData={setPropertyData}/>
-        <p>{propertyData}</p>
+      <SearchBar setQuery={setQuery} query={query}/>
+      <SearchButton query={query} setPropertyData={props.setPropertyData} setView={props.setView}/>
     </>
   );
 }
