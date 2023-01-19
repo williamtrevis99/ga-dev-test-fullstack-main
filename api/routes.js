@@ -4,63 +4,36 @@ const router = new Router();
 const lrProperty = require('./models/lrProperty.js');
 
 
-
 /**
- * Retrieves entries with matching lrPropertyId
- * 
- * Returns 404 if not found.
+ * Route that returns transactions filtered 
+ * by ID, POSTCODE, or STREET of House.
  */
-router.param('lrPropertyId', async (id, ctx, next) =>
-{
-	ctx.lrProperty = await new lrProperty({id: id}).fetch({withRelated: ['lrTransactions'], require: false});
 
-	if(!ctx.lrProperty)
-	{
-		ctx.status = 404;
-		return ctx.body = {error: true, msg: "LRProperty not found"};
-	}
-	return next();
+router.get('/lrProperty/transactions', async (ctx, next) => 
+{		
+	let queryType;
 
-})
+	if ('id' in ctx.query) queryType = 'id'
+	if ('postcode' in ctx.query) queryType = 'postcode'
+	if ('street' in ctx.query) queryType = 'street'
 
+	// if no query params included
+	if (!queryType) return ctx.body = {success: false};
 
-/**
- * Route that queries for entry with matching property Id
- */
-.get('/lrProperty/:lrPropertyId', async (ctx, next) => 
-{	
-	return ctx.body = {success: true, lrProperty: ctx.lrProperty.toJSON()};
-})
-
-
-/**
- * Retrieves entries with matching lrPropertyId
- * 
- * Returns 404 if not found.
- */
-router.param('lrPropertyLocation', async (location, ctx, next) =>
-{	
-	ctx.lrProperty = await new lrProperty({street: location}).fetch({withRelated: ['lrTransactions'], require: false});
-
-	if(!ctx.lrProperty) {
-		ctx.lrProperty = await new lrProperty({outcode: location}).fetch({withRelated: ['lrTransactions'], require: false});
+	if (queryType === 'id') {
+		ctx.lrProperty = await new lrProperty({id: ctx.query.id}).fetch({withRelated: ['lrTransactions'], require: false});
+	} else if (query === "street") {
+		ctx.lrProperty = await new lrProperty({street: ctx.query.street}).fetch({withRelated: ['lrTransactions'], require: false});
+	} else if (query === "postcode") {
+		ctx.lrProperty = await new lrProperty({incode: ctx.query.postcode}).fetch({withRelated: ['lrTransactions'], require: false});
 	}
 
 	if(!ctx.lrProperty)
 	{
 		ctx.status = 404;
-		return ctx.body = {error: true, msg: "LRProperty not found"};
+		return ctx.body = {error: true, msg: "No Properties found"};
 	}
-	return next();
 
-})
-
-
-/**
- * Route that queries for entry with matching property Id
- */
-.get('/lrProperty/location/:lrPropertyLocation', async (ctx, next) => 
-{	
 	return ctx.body = {success: true, lrProperty: ctx.lrProperty.toJSON()};
 })
 
