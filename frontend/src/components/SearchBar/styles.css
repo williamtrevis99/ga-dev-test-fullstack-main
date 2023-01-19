@@ -3,8 +3,8 @@
 .search-bar {
     width: 50%;
     height: 30px;
-    border-radius: 15px;
-    border: 0;
     padding: 10px 20px;
     font-size: 18px;
+    border: 0.6px solid grey;
+    border-radius: 15px;
 }

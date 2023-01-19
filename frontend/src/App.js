@@ -24,7 +24,7 @@ function App()
       </div>
       
       <div className="secondary-container">
-        
+      
         { view === 'SearchView' ? 
           <SearchView setView={setView} setPropertyData={setPropertyData}/> : 
           <ResultsView propertyData={propertyData} /> 

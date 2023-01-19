@@ -12,7 +12,7 @@ function SearchButton(props) {
             const json = await resp.json();
 
             if(json.success)
-                return JSON.stringify(json.lrProperty)
+                return json.lrProperty
 
         } else {
             
@@ -20,7 +20,8 @@ function SearchButton(props) {
             const json = await resp.json();
 
             if(json.success)
-                return JSON.stringify(json.lrProperty)
+                console.log(json.lrProperty)
+                return json.lrProperty
         }
     }
 
