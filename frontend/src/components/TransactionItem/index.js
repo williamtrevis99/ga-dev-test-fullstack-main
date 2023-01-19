@@ -1,8 +1,5 @@
-import {useState, useEffect} from 'react';
 import './styles.css';
 import { FcMoneyTransfer, FcCalendar } from 'react-icons/fc';
-
-
 
 function ListItem(props) {
 
@@ -21,6 +18,5 @@ function ListItem(props) {
     )
 
 }
-
 
 export default ListItem;

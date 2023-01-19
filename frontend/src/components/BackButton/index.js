@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import './styles.css'
 
 
@@ -14,7 +13,7 @@ function BackButton(props) {
         placeholder={"Search"}
         type={'button'}
         onClick={onClick}
-        >Back</button>
+        >↺ Back</button>
     )
 
 }
