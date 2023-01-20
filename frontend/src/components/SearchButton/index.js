@@ -11,7 +11,7 @@ const search = async (query) => {
         if (isPostCode) {
             const resp = await fetch(`/lrProperty/transactions/?postcode=${query.toUpperCase()}`);
             const json = await resp.json();
-
+            
             return json.lrProperty
 
         }

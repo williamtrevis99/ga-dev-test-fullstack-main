@@ -6,8 +6,7 @@ import LoadingView from './views/LoadingView';
 import ResultsView from './views/ResultsView';
 
 
-function App()
-{
+function App() {
 
   const [view, setView] = useState('SearchView');
   const [propertyData, setPropertyData] = useState(0);

@@ -2,7 +2,6 @@ import { ThreeDots } from 'react-loading-icons'
 import './styles.css';
 
 
- 
 function LoadingView(props) {
   return (
     <div className="loading-container">
