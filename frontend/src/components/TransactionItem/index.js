@@ -1,5 +1,5 @@
-import './styles.css';
 import { FcMoneyTransfer, FcCalendar } from 'react-icons/fc';
+import './styles.css';
 
 function ListItem(props) {
 

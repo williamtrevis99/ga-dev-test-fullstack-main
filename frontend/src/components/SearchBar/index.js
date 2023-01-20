@@ -1,15 +1,12 @@
-import {useState, useEffect} from 'react';
 import './styles.css';
 
 
 function SearchBar(props) {
 
-
     const handleChange = (e) => {
         e.preventDefault();
         props.setQuery(e.target.value);
       };
-
 
     return (
         <input

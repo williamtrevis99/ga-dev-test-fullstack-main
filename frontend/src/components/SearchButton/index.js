@@ -1,5 +1,6 @@
 import './styles.css';
 
+// search method
 const search = async (query) => {
 
     if(isNaN(+query)) {
@@ -23,7 +24,7 @@ const search = async (query) => {
             return json.lrProperty
 
         }
-
+    // if it is an ID
     } else {
         
         const resp = await fetch(`/lrProperty/transactions/?id=${query}`);

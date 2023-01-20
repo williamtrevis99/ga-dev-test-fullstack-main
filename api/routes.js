@@ -18,16 +18,33 @@ router.get('/lrProperty/transactions', async (ctx, next) =>
 	if ('street' in ctx.query) queryType = 'street'
 
 	// if no query params included
-	if (!queryType) return ctx.body = {success: false};
+	if (!queryType) return ctx.body = {error: true, msg: "No Query Params provided"};
 
 	if (queryType === 'id') {
-		ctx.lrProperty = await lrProperty.where({id: ctx.query.id}).fetchAll({withRelated: ['lrTransactions'], require: false});
+		ctx.lrProperty = await lrProperty
+		.where({id: ctx.query.id})
+		.fetchAll({withRelated: ['lrTransactions'], require: false});
+
 	} else if (queryType === 'street') {
-		ctx.lrProperty = await lrProperty.where({street: ctx.query.street}).fetchAll({withRelated: ['lrTransactions'], require: false})
+		ctx.lrProperty = await lrProperty
+		.where({street: ctx.query.street})
+		.fetchAll({withRelated: ['lrTransactions'], require: false})
+
 	} else if (queryType === 'postcode') {
-		ctx.lrProperty = await lrProperty.where({incode: ctx.query.postcode}).fetchAll({withRelated: ['lrTransactions'], require: false});
+
+		let splitArrary = ctx.query.postcode.split(' ')
+
+		if (splitArrary.length !== 2) {
+			return ctx.body = {error: true, msg: "Invalid Postcode", lrProperty: []};
+		}
+
+		ctx.lrProperty = await lrProperty
+		.where({outcode: splitArrary[0]})
+		.where({incode: splitArrary[1]})
+		.fetchAll({withRelated: ['lrTransactions'], require: false})
 	}
 
+	// if no properties returned
 	if(ctx.lrProperty.length === 0)
 	{
 		ctx.status = 404;

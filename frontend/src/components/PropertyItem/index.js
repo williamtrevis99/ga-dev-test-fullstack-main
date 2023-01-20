@@ -1,6 +1,6 @@
-import './styles.css';
 import TransactionItem from '../TransactionItem'
 import FlatList from 'flatlist-react';
+import './styles.css';
 
 
 const renderTransaction = (transaction, idx) => {
@@ -24,4 +24,5 @@ function PropertyItem(props) {
     )
 
 }
+
 export default PropertyItem;
