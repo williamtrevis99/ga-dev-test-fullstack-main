@@ -1,4 +1,3 @@
-import {useState, useEffect} from 'react';
 import './styles.css';
 import TransactionItem from '../TransactionItem'
 import FlatList from 'flatlist-react';

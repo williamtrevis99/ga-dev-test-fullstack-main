@@ -47,6 +47,6 @@ code {
 
 @media only screen and (max-width: 600px) {
   .base-container {
-    background-color: blue;
+    background-color: transparent;
   }
 }

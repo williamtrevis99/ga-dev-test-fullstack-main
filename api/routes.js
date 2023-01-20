@@ -21,11 +21,11 @@ router.get('/lrProperty/transactions', async (ctx, next) =>
 	if (!queryType) return ctx.body = {success: false};
 
 	if (queryType === 'id') {
-		ctx.lrProperty = await new lrProperty({id: ctx.query.id}).fetch({withRelated: ['lrTransactions'], require: false});
+		ctx.lrProperty = await lrProperty.where({id: ctx.query.id}).fetch({withRelated: ['lrTransactions'], require: false});
 	} else if (queryType === 'street') {
-		ctx.lrProperty = await new lrProperty({street: ctx.query.street}).fetch({withRelated: ['lrTransactions'], require: false});
+		ctx.lrProperty = await lrProperty.where({street: ctx.query.street}).fetchAll({withRelated: ['lrTransactions'], require: false})
 	} else if (queryType === 'postcode') {
-		ctx.lrProperty = await new lrProperty({incode: ctx.query.postcode}).fetch({withRelated: ['lrTransactions'], require: false});
+		ctx.lrProperty = await lrProperty.where({incode: ctx.query.postcode}).fetchAll({withRelated: ['lrTransactions'], require: false});
 	}
 
 	if(!ctx.lrProperty)
