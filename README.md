@@ -8,7 +8,6 @@ To Install the project dependencies, run the script setup.sh located in the root
 
 ### `./setup.sh`
 
-<br />
 
 ## Setup
 
@@ -16,7 +15,6 @@ Navigate into both the frontend and api directories and run the below command in
 
 ### `npm run start`
 
-<br />
 
 ## Example Screenshots
 
