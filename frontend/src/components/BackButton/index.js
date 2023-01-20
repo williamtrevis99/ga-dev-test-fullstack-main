@@ -5,6 +5,7 @@ function BackButton(props) {
 
     const onClick = async () => {
         props.setView('SearchView')
+        props.setPropertyData(0)
     }
 
     return (

@@ -9,18 +9,16 @@ const renderTransaction = (transaction, idx) => {
     );
 }
 
-
 function PropertyItem(props) {
 
-    const property = props.propertyData
+    const property = props.property
     return (
         <>
             <p className='property-data'>{ property.outcode }{ property.incode }, { property.paon}, { property.saon} , { property.street}</p>
             
             <FlatList
-            list={props.propertyData.lrTransactions}
+            list={property.lrTransactions}
             renderItem={renderTransaction}
-            renderWhenEmpty={() => <div>List is empty!</div>}
             />
         </>
     )

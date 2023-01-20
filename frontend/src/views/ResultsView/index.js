@@ -2,12 +2,14 @@ import PropertyItem from '../../components/PropertyItem';
 import './styles.css';
 import FlatList from 'flatlist-react';
 
+
+
 function ResultsView(props)
 {
 
-  const renderProperty = (propertyData, idx) => {
+  const renderProperty = (property, idx) => {
     return (
-      <PropertyItem propertyData={propertyData}/>
+      <PropertyItem property={property} key={idx}/>
     );
   }
  
@@ -18,6 +20,7 @@ function ResultsView(props)
         <FlatList
             list={props.propertyData}
             renderItem={renderProperty}
+            renderWhenEmpty={() => <div>No Propeties Found</div>}
             />
     </div>
      

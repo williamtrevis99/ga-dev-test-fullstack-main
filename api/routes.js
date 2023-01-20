@@ -21,20 +21,20 @@ router.get('/lrProperty/transactions', async (ctx, next) =>
 	if (!queryType) return ctx.body = {success: false};
 
 	if (queryType === 'id') {
-		ctx.lrProperty = await lrProperty.where({id: ctx.query.id}).fetch({withRelated: ['lrTransactions'], require: false});
+		ctx.lrProperty = await lrProperty.where({id: ctx.query.id}).fetchAll({withRelated: ['lrTransactions'], require: false});
 	} else if (queryType === 'street') {
 		ctx.lrProperty = await lrProperty.where({street: ctx.query.street}).fetchAll({withRelated: ['lrTransactions'], require: false})
 	} else if (queryType === 'postcode') {
 		ctx.lrProperty = await lrProperty.where({incode: ctx.query.postcode}).fetchAll({withRelated: ['lrTransactions'], require: false});
 	}
 
-	if(!ctx.lrProperty)
+	if(ctx.lrProperty.length === 0)
 	{
 		ctx.status = 404;
-		return ctx.body = {error: true, msg: "No Properties found"};
+		return ctx.body = {error: true, msg: "No Properties found", lrProperty: []};
 	}
 
-	return ctx.body = {success: true, lrProperty: ctx.lrProperty.toJSON()};
+	return ctx.body = {error: false, lrProperty: ctx.lrProperty.toJSON()};
 })
 
 
